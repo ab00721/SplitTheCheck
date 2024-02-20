@@ -8,7 +8,18 @@
     <%= link_to "New restaurant", new_restaurant_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="restaurants" class="min-w-full">
-    <%= render @restaurants %>
-  </div>
+  <table class="w-full border-collapse border mt-5">
+    <thead>
+      <tr>
+        <th class="border p-2">Name</th>
+        <th class="border p-2">Location</th>
+        <th class="border p-2">Will Split:<br>Won't Split</th>
+        <th class="border p-2">Vote</th>
+        <th class="border p-2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'restaurant_table', locals: { restaurants: @restaurants } %>
+    </tbody>
+  </table>
 </div>

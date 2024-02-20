@@ -1,0 +1,17 @@
+<% restaurants.each do |restaurant| %>
+  <tr>
+    <td class="border p-2"><%= restaurant.name%></td>
+    <td class="border p-2"><%= restaurant.location%></td>
+    <td class="border p-2 text-center">
+      <%= restaurant.will_split%>:<%= restaurant.wont_split%>
+    </td>
+    <td class="border p-2 flex justify-center">
+      <%= button_to "Will Split", { controller: "restaurants", action: "vote", id: restaurant.id, vote: true }, method: :post, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= button_to "Won't Split", { controller: "restaurants", action: "vote", id: restaurant.id, vote: false }, method: :post, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    </td>
+    <td class="border p-2 text-center">
+      <%= link_to "Show", restaurant, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Edit", edit_restaurant_path(restaurant), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    </td>
+  </tr>
+<% end %>
