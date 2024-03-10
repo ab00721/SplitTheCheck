@@ -1,6 +1,16 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[ show edit update destroy ]
 
+  def vote
+    @restaurant = Restaurant.find(params[:id])
+    if params[:vote] == 'true'
+      @restaurant = Restaurant.increment_counter(:will_split, @restaurant.id)
+    else
+      @restaurant = Restaurant.increment_counter(:wont_split, @restaurant.id)
+    end
+    redirect_to restaurants_path
+  end
+
   # GET /restaurants or /restaurants.json
   def index
     @restaurants = Restaurant.all
