@@ -21,15 +21,17 @@
     <%= form.text_field :location, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full #{'readonly-style' if readonly}", readonly: readonly %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :will_split %>
-    <%= form.number_field :will_split, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full #{'readonly-style' if readonly}", readonly: readonly %>
-  </div>
+  <% if action_name.in?(['show']) %>
+    <div class="my-5">
+      <%= form.label :will_split %>
+      <%= form.number_field :will_split, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full #{'readonly-style' if readonly}", readonly: readonly %>
+    </div>
 
-  <div class="my-5">
-    <%= form.label :wont_split %>
-    <%= form.number_field :wont_split, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full #{'readonly-style' if readonly}", readonly: readonly %>
-  </div>
+    <div class="my-5">
+      <%= form.label :wont_split %>
+      <%= form.number_field :wont_split, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full #{'readonly-style' if readonly}", readonly: readonly %>
+    </div>
+  <% end %>
 
   <% unless readonly %>
     <div class="inline">
