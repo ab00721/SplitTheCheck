@@ -1,14 +1,23 @@
 class RestaurantsController < ApplicationController
+  include ActionView::RecordIdentifier
   before_action :set_restaurant, only: %i[ show edit update destroy ]
 
   def vote
     @restaurant = Restaurant.find(params[:id])
     if params[:vote] == 'true'
-      @restaurant = Restaurant.increment_counter(:will_split, @restaurant.id)
+      @restaurant.increment!(:will_split)
     else
-      @restaurant = Restaurant.increment_counter(:wont_split, @restaurant.id)
+      @restaurant.increment!(:wont_split)
     end
-    redirect_to restaurants_path
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "vote_column_#{params[:id]}",
+          partial: 'vote_results',
+          locals: { restaurant_id: @restaurant.id }
+        )
+      end
+    end
   end
 
   # GET /restaurants or /restaurants.json
