@@ -5,10 +5,14 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Restaurants</h1>
-    <%= link_to "New restaurant", new_restaurant_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <table class="w-full border-collapse border mt-5">
+  <div class="flex justify-between items-center mt-5">
+    <%= render partial: 'search_form', locals: { restaurants: @restaurants } %>
+    <%= link_to "New restaurant", new_restaurant_path, class: "format-button" %>
+  </div>
+
+  <table class="w-full border-collapse border mt-5 mb-10">
     <thead>
       <tr>
         <th class="border p-2">Name</th>

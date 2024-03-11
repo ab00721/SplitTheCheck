@@ -1,0 +1,6 @@
+<div class="flex justify-between items-center">
+  <%= form_with url: restaurants_path, method: :get do |form| %>
+    <%= form.text_field :search, placeholder: "Search by name or location", class: "mr-2 rounded-lg py-3 px-5 bg-white text-gray-800 block font-medium", style: "display: inline-block;" %>
+    <%= form.submit "Search", class: "format-button" %>
+  <% end %>
+</div>
