@@ -4,20 +4,7 @@ class RestaurantsController < ApplicationController
 
   def vote
     @restaurant = Restaurant.find(params[:id])
-    if params[:vote] == 'true'
-      @restaurant.increment!(:will_split)
-    else
-      @restaurant.increment!(:wont_split)
-    end
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(
-          "vote_column_#{params[:id]}",
-          partial: 'vote_results',
-          locals: { restaurant_id: @restaurant.id }
-        )
-      end
-    end
+    @restaurant.vote(params[:vote] == 'true')
   end
 
   # GET /restaurants or /restaurants.json

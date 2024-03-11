@@ -4,7 +4,7 @@
     <td class="border p-2"><%= restaurant.location%></td>
     <td class="border p-2 text-center">
       <div id="vote_column_<%= restaurant.id %>">
-        <%= render partial: 'vote_results', locals: { restaurant_id: restaurant.id } %>
+        <%= render partial: 'vote_results', locals: { restaurant: restaurant } %>
       </div>
     </td>
     <td class="border p-2 flex justify-center">
