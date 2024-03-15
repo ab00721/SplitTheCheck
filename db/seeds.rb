@@ -14,3 +14,4 @@ Restaurant.create(name: "Rocco's Tacos", location: "Delray", will_split: 53, won
 Restaurant.create(name: "Pizza Rustica", location: "Delray", will_split: 103, wont_split: 0)
 Restaurant.create(name: "Vic and Angelo's", location: "Delray", will_split: 4, wont_split: 15)
 Restaurant.create(name: "Benny's", location: "Lake Worth", will_split: 29, wont_split: 5)
+Restaurant.create(name: "Copperfish", location: "Boca", will_split: 13, wont_split: 14)

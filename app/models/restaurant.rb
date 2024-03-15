@@ -6,8 +6,8 @@ class Restaurant < ApplicationRecord
   validates :name, uniqueness: { scope: :location, message: "has already been taken at this location." }
 
   def set_defaults
-    self.will_split = 0
-    self.wont_split = 0 
+    self.will_split = 0 if will_split.blank?
+    self.wont_split = 0 if wont_split.blank?
   end
 
   def vote(split_check)
