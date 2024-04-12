@@ -1,5 +1,9 @@
 <div class="flex">
-  <%= link_to "Sign Up", new_user_registration_path, style: "margin-right: 10px; text-decoration: underline; color: blue" %>
-  <%= link_to "Login", new_user_session_path, style: "margin-right: 10px; text-decoration: underline; color: blue" %>
-  <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, style: "margin-right: 10px; text-decoration: underline; color: blue" %>
+  <%= link_to "Home", restaurants_path, class: "format-button", style: "margin-right: 10px;" %>
+  <% if user_signed_in? %>
+    <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "format-button bg-white", style: "bg-white margin-right: 10px;" %>
+  <% else %>
+    <%= link_to "Sign Up", new_user_registration_path, class: "format-button", style: "margin-right: 10px;" %>
+    <%= link_to "Login", new_user_session_path, class: "format-button", style: "margin-right: 10px;" %>
+  <% end %>
 </div>
