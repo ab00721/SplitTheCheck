@@ -12,8 +12,9 @@
   </head>
 
   <body>
-    <header class="header-box">
+    <header class="header-box flex justify-between items-center">
       <h1 class="text-3xl font-bold">Split the Check</h1>
+      <%= render 'layouts/navbar' %>
     </header>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
