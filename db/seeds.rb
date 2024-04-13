@@ -6,12 +6,24 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Restaurant.create(name: "Boca", location: "Sarasota", will_split: 22, wont_split: 1)
-Restaurant.create(name: "State Street", location: "Sarasota", will_split: 12, wont_split: 7)
-Restaurant.create(name: "Oak and Stone", location: "Sarasota", will_split: 8, wont_split: 1)
-Restaurant.create(name: "The Rosemary", location: "Sarasota", will_split: 0, wont_split: 12)
-Restaurant.create(name: "Rocco's Tacos", location: "Delray", will_split: 53, wont_split: 3)
-Restaurant.create(name: "Pizza Rustica", location: "Delray", will_split: 103, wont_split: 0)
-Restaurant.create(name: "Vic and Angelo's", location: "Delray", will_split: 4, wont_split: 15)
-Restaurant.create(name: "Benny's", location: "Lake Worth", will_split: 29, wont_split: 5)
-Restaurant.create(name: "Copperfish", location: "Boca", will_split: 13, wont_split: 14)
+Restaurant.create(name: "Boca", location: "Sarasota")
+Restaurant.create(name: "State Street", location: "Sarasota")
+Restaurant.create(name: "Oak and Stone", location: "Sarasota")
+Restaurant.create(name: "The Rosemary", location: "Sarasota")
+Restaurant.create(name: "Rocco's Tacos", location: "Delray")
+Restaurant.create(name: "Pizza Rustica", location: "Delray")
+Restaurant.create(name: "Vic and Angelo's", location: "Delray")
+Restaurant.create(name: "Benny's", location: "Lake Worth")
+Restaurant.create(name: "Copperfish", location: "Boca")
+
+20.times do |i|
+  User.create(email: "user#{i+1}@email.com", password: "password")
+end
+
+User.all.each do |user|
+  restaurants = Restaurant.order(Arel.sql('Random()')).limit(3)
+  restaurants.each do |restaurant|
+    random_boolean = [true, false].sample
+    Vote.create(user: user, restaurant: restaurant, vote: random_boolean)
+  end
+end

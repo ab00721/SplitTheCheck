@@ -1,5 +1,7 @@
 class Restaurant < ApplicationRecord
 
+  has_many :votes
+
   before_validation :set_defaults, on: :create
 
   validates :name, :location, :will_split, :wont_split, presence: true

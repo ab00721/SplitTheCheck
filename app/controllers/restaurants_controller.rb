@@ -4,7 +4,14 @@ class RestaurantsController < ApplicationController
 
   def vote
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.vote(params[:vote] == 'true')
+    vote_value = params[:vote] == 'true'
+
+    if current_user
+      @vote = current_user.votes.find_or_initialize_by(restaurant: @restaurant)
+      @vote.update(vote: vote_value)
+
+      update_vote_counts(@restaurant)
+    end
   end
 
   # GET /restaurants or /restaurants.json
@@ -72,5 +79,12 @@ class RestaurantsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :location, :will_split, :wont_split)
+    end
+
+    def update_vote_counts(restaurant)
+      restaurant.update(
+        will_split: restaurant.votes.where(vote: true).count,
+        wont_split: restaurant.votes.where(vote: false).count
+      )
     end
 end

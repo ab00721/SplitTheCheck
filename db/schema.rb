@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_12_205359) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_13_182058) do
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -32,4 +32,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_12_205359) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "restaurant_id", null: false
+    t.boolean "vote"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_votes_on_restaurant_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
+  add_foreign_key "votes", "restaurants"
+  add_foreign_key "votes", "users"
 end

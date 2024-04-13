@@ -1,1 +1,5 @@
-<%= restaurant.will_split%>:<%= restaurant.wont_split%>
+
+<% will_split_count = restaurant.votes.where(vote: true).count %>
+<% wont_split_count = restaurant.votes.where(vote: false).count %>
+
+<%= will_split_count %>:<%= wont_split_count %>
