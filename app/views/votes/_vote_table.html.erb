@@ -1,0 +1,17 @@
+<% votes.each do |vote| %>
+  <tr>
+    <td class="border p-2"><%= vote.user.email %></td>
+    <td class="border p-2"><%= vote.restaurant.name %></td>
+    <td class="border p-2"><%= vote.restaurant.location %></td>
+    <td class="border p-2 text-center">
+      <% if vote.vote %>
+        Will Split
+      <% else %>
+        Won't Split
+      <% end %>
+    </td>
+    <td class="border p-2 text-center">
+      <%= link_to "Show", vote, class: "format-button" %>
+    </td>
+  </tr>
+<% end %>

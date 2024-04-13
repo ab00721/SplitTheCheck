@@ -1,22 +1,31 @@
 <div id="<%= dom_id vote %>">
   <p class="my-5">
     <strong class="block font-medium mb-1">User:</strong>
-    <%= vote.user_id %>
+    <%= vote.user.email %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Restaurant:</strong>
-    <%= vote.restaurant_id %>
+    <%= vote.restaurant.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Location:</strong>
+    <%= vote.restaurant.location %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Vote:</strong>
-    <%= vote.vote %>
+    <% if vote.vote %>
+      Will Split
+    <% else %>
+      Won't Split
+    <% end %>
   </p>
 
   <% if action_name != "show" %>
     <%= link_to "Show this vote", vote, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this vote", edit_vote_path(vote), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Delete this vote", vote, method: :delete, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>
