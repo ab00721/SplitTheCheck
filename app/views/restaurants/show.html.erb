@@ -8,7 +8,13 @@
 
     <%= render "form", restaurant: @restaurant, readonly: true %>
 
-    <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), class: "format-button" %>
+    <% if user_signed_in? %>
+      <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), class: "format-button" %>
+      <%= link_to "View History", edit_restaurant_path(@restaurant), class: "format-button" %>
+    <% else %>
+      <%= button_tag "Edit this restaurant", class: "format-button", disabled: true, title: "Please sign in to edit a restaurant"  %>
+      <%= button_tag "View History", class: "format-button", disabled: true, title: "Please sign in to view history"  %>
+    <% end %>
     <%= link_to "Back to restaurants", restaurants_path, class: "format-button" %>
   </div>
 </div>

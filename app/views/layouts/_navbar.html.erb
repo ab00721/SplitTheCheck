@@ -1,5 +1,7 @@
 <div class="flex">
-  <%= link_to "Home", restaurants_path, class: "format-button", style: "margin-right: 10px;" %>
+  <% unless current_page?(restaurants_path) %>
+    <%= link_to "Home", restaurants_path, class: "format-button", style: "margin-right: 10px;" %>
+  <% end %>
   <% if user_signed_in? %>
     <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "format-button bg-white", style: "bg-white margin-right: 10px;" %>
   <% else %>

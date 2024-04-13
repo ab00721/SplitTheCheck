@@ -9,7 +9,11 @@
 
   <div class="flex justify-between items-center mt-5">
     <%= render partial: 'search_form', locals: { restaurants: @restaurants } %>
-    <%= link_to "New restaurant", new_restaurant_path, class: "format-button" %>
+    <% if user_signed_in? %>
+      <%= link_to "New restaurant", new_restaurant_path, class: "format-button" %>
+    <% else %>
+      <%= button_tag "New restaurant", class: "format-button", disabled: true, title: "Please sign in to add a new restaurant" %>
+    <% end %>
   </div>
 
   <table class="w-full border-collapse border mt-5 mb-10">
