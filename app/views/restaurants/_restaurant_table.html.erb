@@ -12,16 +12,14 @@
         <%= button_to "Will Split", { controller: "restaurants", action: "vote", id: restaurant.id, vote: true }, method: :post, class: "format-button mr-1" %>
         <%= button_to "Won't Split", { controller: "restaurants", action: "vote", id: restaurant.id, vote: false }, method: :post, class: "format-button" %>
       <% else %>
-        <%= button_tag "Will Split", class: "format-button mr-1", disabled: true, title: "Please sign in to vote" %>
-        <%= button_tag "Won't Split", class: "format-button", disabled: true, title: "Please sign in to vote" %>
+        <%= button_tag "Will Split", class: "format-button bg-gray-800 mr-1", disabled: true, title: "Please sign in to vote" %>
+        <%= button_tag "Won't Split", class: "format-button bg-gray-800", disabled: true, title: "Please sign in to vote" %>
       <% end %>
     </td>
     <td class="border p-2 text-center">
       <%= link_to "Show", restaurant, class: "format-button" %>
       <% if user_signed_in? %>
         <%= link_to "Edit", edit_restaurant_path(restaurant), class: "format-button" %>
-      <% else %>
-        <%= button_tag "Edit", class: "format-button", disabled: true, title: "Please sign in to edit a restaurant"  %>
       <% end %>
     </td>
   </tr>

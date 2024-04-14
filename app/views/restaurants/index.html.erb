@@ -11,8 +11,6 @@
     <%= render partial: 'search_form', locals: { restaurants: @restaurants } %>
     <% if user_signed_in? %>
       <%= link_to "New restaurant", new_restaurant_path, class: "format-button" %>
-    <% else %>
-      <%= button_tag "New restaurant", class: "format-button", disabled: true, title: "Please sign in to add a new restaurant" %>
     <% end %>
   </div>
 
@@ -22,7 +20,13 @@
         <th class="border p-2">Name</th>
         <th class="border p-2">Location</th>
         <th class="border p-2">Will Split:<br>Won't Split</th>
-        <th class="border p-2">Vote</th>
+        <th class="border p-2">
+          <% if user_signed_in? %>
+            Vote
+          <% else %>
+            Log in to Vote
+          <% end %>
+        </th>
         <th class="border p-2">Action</th>
       </tr>
     </thead>

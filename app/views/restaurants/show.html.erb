@@ -10,8 +10,6 @@
 
     <% if user_signed_in? %>
       <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), class: "format-button" %>
-    <% else %>
-      <%= button_tag "Edit this restaurant", class: "format-button", disabled: true, title: "Please sign in to edit a restaurant"  %>
     <% end %>
     <%= link_to "Back to restaurants", restaurants_path, class: "format-button" %>
   </div>
