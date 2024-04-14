@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   include ActionView::RecordIdentifier
   before_action :set_restaurant, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: %i[index show]
 
   def vote
     @restaurant = Restaurant.find(params[:id])
