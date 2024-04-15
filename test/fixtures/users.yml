@@ -6,11 +6,13 @@
 #
 one:
   email: user1@email.com
+  encrypted_password: password
 
 
 # column: value
 #
 two:
   email: user2@email.com
+  encrypted_password: password
 
 # column: value
