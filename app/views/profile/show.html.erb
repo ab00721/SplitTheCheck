@@ -1,0 +1,47 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <h2 class="font-bold text-4xl">Viewing Profile</h2>
+    <br>
+    <h4 class="font-bold text-2xl">Email: <%= @user.email %></h4>
+
+    <table class="w-full border-collapse border mt-5 mb-10">
+      <thead>
+        <tr>
+          <th class="border p-2">Restaurant</th>
+          <th class="border p-2">Vote</th>
+          <th class="border p-2">Favorite</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="mx-auto">
+
+    <h2 class="font-bold text-4xl">Comments</h2>
+
+    <table class="w-full border-collapse border mt-5 mb-10">
+      <thead>
+        <tr>
+          <th class="border p-2">Restaurant</th>
+          <th class="border p-2">Comment</th>
+          <th class="border p-2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'comments/comment_table', locals: { comments: @user.comments, profile: true } %>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

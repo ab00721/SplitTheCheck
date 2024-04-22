@@ -1,9 +1,21 @@
 <% comments.each do |comment| %>
   <tr>
-    <td class="border p-2"><%= comment.user.email%></td>
+    <td class="border p-2">
+      <% if profile %>
+        <%= comment.restaurant.name %>
+      <% else %>
+        <%= comment.user.email%>
+      <% end %>
+    </td>
     <td class="border p-2"><%= comment.content%></td>
     <td class="border p-2 text-center">
-      <%= link_to "Show", comment, class: "format-button" %>
+      <% if profile %>
+        <div class="inline-block ml-2">
+          <%= button_to "Delete this comment", comment_path(comment), method: :delete, class: "format-button" %>
+        </div>
+      <% else %>
+        <%= link_to "Show", comment, class: "format-button" %>
+      <% end %>
     </td>
   </tr>
 <% end %>

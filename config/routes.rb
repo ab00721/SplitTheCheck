@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'profile/show'
   resources :comments
   resources :votes
   devise_for :users
