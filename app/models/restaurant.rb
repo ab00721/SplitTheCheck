@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
 
   has_many :votes
+  has_many :comments
 
   before_validation :set_defaults, on: :create
 

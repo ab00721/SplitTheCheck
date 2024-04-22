@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :votes
   devise_for :users
   root 'restaurants#index', as: 'restaurants_index'

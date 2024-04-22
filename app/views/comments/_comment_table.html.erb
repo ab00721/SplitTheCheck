@@ -1,0 +1,9 @@
+<% comments.each do |comment| %>
+  <tr>
+    <td class="border p-2"><%= comment.user.email%></td>
+    <td class="border p-2"><%= comment.content%></td>
+    <td class="border p-2 text-center">
+      <%= link_to "Show", comment, class: "format-button" %>
+    </td>
+  </tr>
+<% end %>

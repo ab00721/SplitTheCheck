@@ -13,4 +13,29 @@
     <% end %>
     <%= link_to "Back to restaurants", restaurants_path, class: "format-button" %>
   </div>
+  <br>
+  <br>
+  <br>
+  <div class="mx-auto">
+
+    <h2 class="font-bold text-4xl">Comments</h2>
+
+    <table class="w-full border-collapse border mt-5 mb-10">
+      <thead>
+        <tr>
+          <th class="border p-2">User</th>
+          <th class="border p-2">Comment</th>
+          <th class="border p-2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'comments/comment_table', locals: { comments: @restaurant.comments } %>
+      </tbody>
+    </table>
+
+    <% if user_signed_in? %>
+      <%= link_to "Add Comment", new_comment_path(restaurant_id: @restaurant.id), class: "format-button" %>
+    <% end %>
+  </div>
+
 </div>
