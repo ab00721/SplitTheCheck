@@ -10,8 +10,9 @@
     <td class="border p-2"><%= comment.content%></td>
     <td class="border p-2 text-center">
       <% if profile %>
-        <div class="inline-block ml-2">
-          <%= button_to "Delete this comment", comment_path(comment), method: :delete, class: "format-button" %>
+        <div class="flex justify-center">
+          <%= button_to "Delete this comment", comment_path(comment), method: :delete, class: "format-button mr-2" %>
+          <%= link_to "View restaurant", restaurant_path(comment.restaurant.id) , class: "format-button" %>
         </div>
       <% else %>
         <%= link_to "Show", comment, class: "format-button" %>

@@ -7,23 +7,28 @@
     <h2 class="font-bold text-4xl">Viewing Profile</h2>
     <br>
     <h4 class="font-bold text-2xl">Email: <%= @user.email %></h4>
+    <br>
+
+    <div class="flex justify-between items-center">
+      <h1 class="font-bold text-4xl">Votes</h1>
+    </div>
 
     <table class="w-full border-collapse border mt-5 mb-10">
       <thead>
         <tr>
           <th class="border p-2">Restaurant</th>
+          <th class="border p-2">Location</th>
           <th class="border p-2">Vote</th>
-          <th class="border p-2">Favorite</th>
+          <th class="border p-2">Action</th>
         </tr>
       </thead>
       <tbody>
-        
+        <%= render partial: 'votes/vote_table', locals: { votes: @votes, profile: true } %>
       </tbody>
     </table>
 
   </div>
-  <br>
-  <br>
+
   <br>
   <div class="mx-auto">
 

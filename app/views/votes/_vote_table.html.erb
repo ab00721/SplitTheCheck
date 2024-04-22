@@ -1,6 +1,8 @@
 <% votes.each do |vote| %>
   <tr>
-    <td class="border p-2"><%= vote.user.email %></td>
+    <% if !profile %>
+      <td class="border p-2"><%= vote.user.email %></td>
+    <% end %>
     <td class="border p-2"><%= vote.restaurant.name %></td>
     <td class="border p-2"><%= vote.restaurant.location %></td>
     <td class="border p-2 text-center">
@@ -11,7 +13,14 @@
       <% end %>
     </td>
     <td class="border p-2 text-center">
-      <%= link_to "Show", vote, class: "format-button" %>
+      <% if profile %>
+        <div class="flex justify-center">
+          <%= link_to "Delete this vote", vote, method: :delete, class: "format-button mr-2" %>
+          <%= link_to "View restaurant", restaurant_path(vote.restaurant.id) , class: "format-button" %>
+        </div>
+      <% else %>
+        <%= link_to "Show", vote, class: "format-button" %>
+      <% end %>
     </td>
   </tr>
 <% end %>
