@@ -25,5 +25,11 @@ User.all.each do |user|
   restaurants.each do |restaurant|
     random_boolean = [true, false].sample
     Vote.create(user: user, restaurant: restaurant, vote: random_boolean)
+    if random_boolean
+      content = ["great food", "great atmosphere", "great service", "great price"].sample
+    else
+      content = ["bad food", "bad atmosphere", "bad service", "bad price"].sample
+    end
+    Comment.create(user: user, restaurant: restaurant, content: content)
   end
 end

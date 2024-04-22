@@ -1,18 +1,20 @@
 <div id="<%= dom_id comment %>">
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= comment.user.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Restaurant:</strong>
+    <%= comment.restaurant.name %>
+  </p>
+
   <p class="my-5">
     <strong class="block font-medium mb-1">Content:</strong>
     <%= comment.content %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= comment.user_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Restaurant:</strong>
-    <%= comment.restaurant_id %>
-  </p>
 
   <% if action_name != "show" %>
     <%= link_to "Show this comment", comment, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
