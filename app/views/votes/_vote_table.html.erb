@@ -15,7 +15,7 @@
     <td class="border p-2 text-center">
       <% if profile %>
         <div class="flex justify-center">
-          <%= link_to "Delete this vote", vote, method: :delete, class: "format-button mr-2" %>
+          <%= button_to "Delete this vote", vote_path(vote), method: :delete, class: "format-button mr-2" %>
           <%= link_to "View restaurant", restaurant_path(vote.restaurant.id) , class: "format-button" %>
         </div>
       <% else %>
