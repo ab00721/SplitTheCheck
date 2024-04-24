@@ -1,5 +1,14 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_favorite, only: %i[ show edit update destroy ]
+
+  def add_favorite
+
+  end
+
+  def remove_favorite
+
+  end
 
   # GET /favorites or /favorites.json
   def index
@@ -21,7 +30,7 @@ class FavoritesController < ApplicationController
 
   # POST /favorites or /favorites.json
   def create
-    @favorite = Favorite.new(favorite_params)
+    @favorite = Favorite.new(user_id: current_user.id, restaurant_id: params[:restaurant_id])
 
     respond_to do |format|
       if @favorite.save

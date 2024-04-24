@@ -17,10 +17,18 @@
       <% end %>
     </td>
     <td class="border p-2 text-center">
-      <%= link_to "Show", restaurant, class: "format-button" %>
-      <% if user_signed_in? %>
-        <%= link_to "Edit", edit_restaurant_path(restaurant), class: "format-button" %>
-      <% end %>
+      <div class="flex justify-center items-center">
+        <%= link_to "Show", restaurant, class: "format-button mr-2" %>
+        <% if user_signed_in? %>
+          <%= link_to "Edit", edit_restaurant_path(restaurant), class: "format-button mr-2" %>
+          <% favorite = current_user.favorites.find_by(restaurant_id: restaurant.id) %>
+          <% if favorite %>
+            <%= button_to "", favorite_path(favorite), method: :delete, class: "fa fa-star fa-lg checked ml-2" %>
+          <% else %>
+            <%= button_to "", favorites_path(restaurant_id: restaurant.id), method: :post, class: "ml-2 fa fa-star fa-lg unchecked" %>
+          <% end %>
+        <% end %>
+      </div>
     </td>
   </tr>
 <% end %>
