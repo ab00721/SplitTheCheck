@@ -60,7 +60,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: 'comments/comment_table', locals: { comments: @user.comments, profile: true } %>
+        <%= render partial: 'comments/comment_table', locals: { comments: current_user.comments, profile: true } %>
       </tbody>
     </table>
 
