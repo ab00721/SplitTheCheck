@@ -10,6 +10,22 @@
     <br>
 
     <div class="flex justify-between items-center">
+      <h1 class="font-bold text-4xl">Favorites</h1>
+    </div>
+
+    <table class="w-full border-collapse border mt-5 mb-10">
+      <thead>
+        <tr>
+          <th class="border p-2">Restaurant</th>
+          <th class="border p-2">Favorite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'favorites/favorite_table', locals: { favorites: @favorites, profile: true } %>
+      </tbody>
+    </table>
+
+    <div class="flex justify-between items-center">
       <h1 class="font-bold text-4xl">Votes</h1>
     </div>
 

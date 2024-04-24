@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favorites
   get 'profile/show'
   resources :comments
   resources :votes

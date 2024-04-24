@@ -26,6 +26,7 @@ User.all.each do |user|
     random_boolean = [true, false].sample
     Vote.create(user: user, restaurant: restaurant, vote: random_boolean)
     if random_boolean
+      Favorite.create(user: user, restaurant: restaurant)
       content = ["great food", "great atmosphere", "great service", "great price"].sample
     else
       content = ["bad food", "bad atmosphere", "bad service", "bad price"].sample

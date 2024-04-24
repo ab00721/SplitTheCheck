@@ -1,0 +1,16 @@
+<% favorites.each do |favorite| %>
+  <tr>
+    <td class="border p-2"><%= favorite.restaurant.name %></td>
+    <td class="border p-2 text-center">
+      <div class="flex justify-center">
+        <%= link_to "Favorite", favorite, method: :post, class: "format-button mr-2" %>
+      </div>
+    </td>
+    <td class="border p-2 text-center">
+      <div class="flex justify-center">
+        <%= link_to "Delete this favorite", favorite, method: :delete, class: "format-button mr-2" %>
+        <%= link_to "View restaurant", restaurant_path(favorite.restaurant.id) , class: "format-button" %>
+      </div>
+    </td>
+  </tr>
+<% end %>

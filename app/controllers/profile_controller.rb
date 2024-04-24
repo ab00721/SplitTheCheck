@@ -3,6 +3,7 @@ class ProfileController < ApplicationController
     @user = current_user
     @comments = @user.comments
     @votes = @user.votes
+    @favorites = @user.favorites
     #@favorites = @user.favorites
   end
 end
