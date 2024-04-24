@@ -3,7 +3,7 @@
     <td class="border p-2"><%= favorite.restaurant.name %></td>
     <td class="border p-2 text-center">
       <div class="flex justify-center">
-        <%= link_to "", favorite, class: "fa fa-star fa-lg checked" %>
+        <%= button_to "", favorite_path(favorite), method: :delete, class: "fa fa-star fa-lg checked ml-2" %>
       </div>
     </td>
     <td class="border p-2 text-center">
