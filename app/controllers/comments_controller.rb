@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: %i[show]
 
   # GET /comments or /comments.json
   def index
@@ -55,7 +56,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to profile_show_path, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -41,7 +41,7 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
       delete vote_url(@vote)
     end
 
-    assert_redirected_to votes_url
+    assert_redirected_to profile_show_path
   end
 
   test "should navigate to restaurants from votes" do
